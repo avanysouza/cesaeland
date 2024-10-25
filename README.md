@@ -2,8 +2,7 @@
 
 O **Parque Temático CESAELand** é uma aplicação para gerenciamento de um parque temático fictício. Este sistema tem por objetivo facilitar a administração de atrações, vendas e manutenções das atrações, permitindo que engenheiros, administradores e clientes interajam de forma eficiente.
 
-
-![ ](https://i.makeagif.com/media/9-10-2015/uMDTrR.gif)
+![uMDTrR](https://github.com/user-attachments/assets/29920be9-dd41-4e34-829e-969c1fbc0132)
 
 ## Índice
 
