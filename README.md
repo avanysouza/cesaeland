@@ -47,3 +47,10 @@ Para executar este projeto em sua máquina, siga os passos abaixo:
    ```bash
    git clone https://github.com/seu_usuario/cesaeland.git
    cd cesaeland
+
+##
+<b>Conheça mais sobre a minha formação e projetos desenvolvidos:<b><br>
+<br>
+<a href="https://www.linkedin.com/in/avany-souza-577457259" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a> 
+
