@@ -1,4 +1,4 @@
-# Parque Temático CESAELand 
+# Parque Temático CESAELand 🎡
 
 O **Parque Temático CESAELand** é uma aplicação para gerenciamento de um parque temático fictício. Este sistema tem por objetivo facilitar a administração de atrações, vendas e manutenções das atrações, permitindo que engenheiros, administradores e clientes interajam de forma eficiente.
 
@@ -34,7 +34,7 @@ Este projeto foi desenvolvido com o objetivo de praticar e aprimorar habilidades
 
 ## Tecnologias Utilizadas
 
-- PyCharm 2024.1.3 (Professional Edition
+- PyCharm 2024.1.3 (Professional Edition)
 - JSON (para gerenciamento de dados de login)
 - Módulos personalizados (`cliente`, `administrador`, `engenheiro`)
 
