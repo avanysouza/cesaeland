@@ -1,0 +1,42 @@
+[
+    {
+        "role": "ADMIN",
+        "username": "root",
+        "password": "root"
+    },
+    {
+        "role": "ENG",
+        "username": "pimentaMachado",
+        "password": "domingo"
+    },
+    {
+        "role": "ADMIN",
+        "username": "it",
+        "password": "password123"
+    },
+    {
+        "role": "ADMIN",
+        "username": "ceo",
+        "password": "cesaeland"
+    },
+    {
+        "role": "ENG",
+        "username": "quim",
+        "password": "sireneBombeiros"
+    },
+    {
+        "role": "ENG",
+        "username": "manutencao",
+        "password": "cesaeland"
+    },
+    {
+        "role": "BILH",
+        "username": "bilheteira",
+        "password": "pass"
+    },
+    {
+        "username": "avany",
+        "password": "123",
+        "role": "ENG"
+    }
+]
