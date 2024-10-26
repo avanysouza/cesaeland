@@ -54,8 +54,11 @@ def menuCliente():
             if novaConsulta == 'n':
                 print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
                 exit()
-            elif novaConsulta != 's':
+            elif novaConsulta == 's':
                 return menuCliente()
+            else:
+                print("Insira uma opção válida")
+                novaConsulta = input("Deseja realizar uma nova consulta? (s/n): ").lower()
 
         except ValueError: #tratamento de exceção
             print("Entrada inválida! Por favor, digite um número válido.")
@@ -108,8 +111,11 @@ def menuAdministrador():
             if novaConsulta == 'n':
                 print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
                 exit()
-            elif novaConsulta != 's':
+            elif novaConsulta == 's':
                 return menuAdministrador()
+            else:
+                print("Insira uma opção válida")
+                novaConsulta = input("Deseja realizar uma nova consulta? (s/n): ").lower()
 
         except ValueError:
             print("Entrada inválida! Por favor, digite um número válido.")
@@ -138,8 +144,11 @@ def menuEngenheiro():
                     if novaConsulta == 'n':
                         print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
                         exit()
-                    elif novaConsulta != 's':
+                    elif novaConsulta == 's':
                         return menuEngenheiro()
+                    else:
+                        print("Insira uma opção válida")
+                        novaConsulta = input("Deseja realizar uma nova consulta? (s/n): ").lower()
                 case 2:
                     return main()
                 case 3:
