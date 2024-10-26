@@ -51,7 +51,7 @@ CESAELand/<br>
 ## Tecnologias Utilizadas
 
 - PyCharm 2024.1.3 (Professional Edition)
-- JSON (para gerenciamento de dados de login)
+- JSON (para gerenciamento de dados)
 - Módulos personalizados (`cliente`, `administrador`, `engenheiro`)
 
 ## Instalação
@@ -64,6 +64,11 @@ Para executar este projeto em sua máquina, siga os passos abaixo:
    git clone https://github.com/seu_usuario/cesaeland.git
    cd cesaeland
 
+2. **Instalação do Pandas**:
+   
+    ```bash
+    pip install pandas
+  
 ##
 <b>Conheça mais sobre a minha formação e projetos desenvolvidos:<b><br>
 <br>
