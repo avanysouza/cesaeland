@@ -51,7 +51,7 @@ CESAELand/<br>
 ## Tecnologias Utilizadas
 
 - PyCharm 2024.1.3 (Professional Edition)
-- JSON (para gerenciamento de dados de login)
+- JSON (para gerenciamento de dados)
 - Módulos personalizados (`cliente`, `administrador`, `engenheiro`)
 
 ## Instalação
