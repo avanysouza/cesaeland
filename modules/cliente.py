@@ -1,14 +1,4 @@
-import json
 import pandas as pd
-def dadosAtracoes(arquivo_json='Cesaeland_atracoes.json'):
-    with open('Cesaeland_atracoes.json') as CesaelandAtracoes:
-        atracoes = json.load(CesaelandAtracoes)
-    return atracoes
-
-def dadosVendas(arquivo_json='Cesaeland_vendas.json'):
-    with open('Cesaeland_vendas.json') as CesaelandVendas:
-        vendas = json.load(CesaelandVendas)
-    return vendas
 
 def consultarAtracoes(atracoes):
     # Cria uma lista para armazenar os dados formatados
@@ -35,11 +25,11 @@ def consultarAtracoes(atracoes):
     return df_atracoes
 
 def bilhetes(vendas):
-    # Dicionários com a quantidade de bilhetes para adultos e crianças
+    # Dicionários para armazenar a quantidade de bilhetes para adultos e crianças
     bilhetesAdultos = {}
     bilhetesCriancas = {}
 
-    # Contabiliza bilhetes vendidos para adultos e crianças
+    #Ciclo para percorrer as vendas e contar a quantidade de bilhetes vendidos para adultos e crianças com base no valor da chave "tipoCliente":
     for venda in vendas:
         atracaoId = venda['atracao']
         if venda['tipoCliente'] == 'adulto':
@@ -55,6 +45,7 @@ def bilhetes(vendas):
 
     return bilhetesCriancas, bilhetesAdultos
 
+#Funções para obter as atrações favoritas dos adultos e crianças
 def atracaoFavoritaAdulto(bilhetesAdultos, atracoes):
     # Identificar a atração mais procurada para adultos
     maisProcuradaAdultos = 0

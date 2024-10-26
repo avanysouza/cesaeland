@@ -1,19 +1,8 @@
-import json
-import cliente
-import administrador
-import engenheiro
-import pandas as pd
+from modules import administrador, dados, cliente, engenheiro
 
-# Função para obter os dados de login do arquivo json
-def dadosLogin(arquivo_json='Cesaeland_logins.json'):
-    with open(arquivo_json) as CesaelandLogins:
-        logins = json.load(CesaelandLogins)
-    return logins
-
-
-# Função para validar as credenciais e tipo de acesso do utilizador
+# Função para validar as credenciais e o tipo de acesso do utilizador (adm ou eng)
 def acesso():
-    logins = dadosLogin()
+    logins = dados.dadosLogin()
 
     print("Informe suas credenciais de acesso:")
     utilizador = input("Utilizador: ")
@@ -33,7 +22,7 @@ def acesso():
 
     print("Credenciais inválidas.")
 
-# Funções para exibição dos menus por tipo de acesso
+# Funções para exibição dos menus por tipo de acesso (cliente, administrador ou engenheiro)
 def menuCliente():
     while True:
         print("Parque Temático CESAELand - Área do Cliente")
@@ -43,23 +32,24 @@ def menuCliente():
 
         try:
             opcao = int(input("Digite o número da opção desejada: \n"))
-            atracoes = cliente.dadosAtracoes()
+            atracoes = dados.dadosAtracoes() #Obter dados no ficheiro dados.py
 
             match opcao:
                 case 1:
-                    print(cliente.consultarAtracoes(atracoes))
+                    print(cliente.consultarAtracoes(atracoes)) #Função para consulta das atrações no ficheiro cliente.py
                 case 2:
-                    vendas = cliente.dadosVendas()
+                    vendas = dados.dadosVendas() #Obter dados no ficheiro dados.py
                     bilhetesCriancas, bilhetesAdultos = cliente.bilhetes(vendas)
                     print("Atração mais procurada por adultos:",
-                          cliente.atracaoFavoritaAdulto(bilhetesAdultos, atracoes))
+                          cliente.atracaoFavoritaAdulto(bilhetesAdultos, atracoes)) #Função para atração favorita no ficheiro cliente.py
                     print("Atração mais procurada por crianças:",
                           cliente.atracaoFavoritaCrianca(bilhetesCriancas, atracoes))
                 case 3:
-                    return acesso()
+                    return main()
                 case _:
                     print("Opção inválida!")
 
+            #Opção para realizar nova consulta ou finalizar a aplicação
             novaConsulta = input("Deseja realizar uma nova consulta? (s/n): ").lower()
             if novaConsulta == 'n':
                 print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
@@ -67,7 +57,7 @@ def menuCliente():
             elif novaConsulta != 's':
                 return menuCliente()
 
-        except ValueError:
+        except ValueError: #tratamento de exceção
             print("Entrada inválida! Por favor, digite um número válido.")
 
 
@@ -87,27 +77,27 @@ def menuAdministrador():
         try:
             opcao = int(input("Digite o número da opção desejada: \n"))
 
-            atracoes = administrador.dadosAtracoes()
-            vendas = administrador.dadosVendas()
-            custos = administrador.dadosCustos()
+            atracoes = dados.dadosAtracoes() #Obter dados no ficheiro dados.py
+            vendas = dados.dadosVendas()
+            custos = dados.dadosCustos()
 
             match opcao:
                 case 1:
-                    print("Total de Vendas: {:.2f}".format(administrador.totalVendas(atracoes, vendas)))
+                    print("Total de Vendas: {:.2f}".format(administrador.totalVendas(atracoes, vendas))) #Função para consulta das vendas no ficheiro administrador.py
                 case 2:
-                    print("Total de Lucro: {:.2f}".format(administrador.totaLucro(vendas, atracoes, custos)))
+                    print("Total de Lucro: {:.2f}".format(administrador.totaLucro(vendas, atracoes, custos))) #Função para consulta do lucro no ficheiro administrador.py
                 case 3:
-                    print("Atração mais procurada Adultos:", administrador.maisProcuradaAdultos(vendas, atracoes))
+                    print("Atração mais procurada Adultos:", administrador.maisProcuradaAdultos(vendas, atracoes)) #Função para consulta da atracao mais procurada no ficheiro administrador.py
                 case 4:
                     print("Atração mais procurada Crianças:", administrador.maisProcuradaCriancas(vendas, atracoes))
                 case 5:
-                    print("Atração mais lucrativa:", administrador.maisLucrativa(vendas, atracoes, custos))
+                    print("Atração mais lucrativa:", administrador.maisLucrativa(vendas, atracoes, custos)) #Função para consulta da atracao mais lucrativa no ficheiro administrador.py
                 case 6:
-                    print("Atração menos lucrativa:", administrador.menosLucrativa(vendas, atracoes, custos))
+                    print("Atração menos lucrativa:", administrador.menosLucrativa(vendas, atracoes, custos)) #Função para consulta da atracao menos lucrativa no ficheiro administrador.py
                 case 7:
-                    administrador.novoUtilizador()
+                    administrador.novoUtilizador() #Função para adicionar novo utilizador no ficheiro administrador.py
                 case 8:
-                    return acesso()
+                    return main()
                 case 9:
                     print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
                     exit()
@@ -137,12 +127,12 @@ def menuEngenheiro():
 
             match opcao:
                 case 1:
-                    atracoes = engenheiro.dadosAtracoes()
-                    vendas = engenheiro.dadosVendas()
+                    atracoes = dados.dadosAtracoes()
+                    vendas = dados.dadosVendas()
 
-                    df_revisoes = engenheiro.consultaRevisoes(vendas, atracoes)  # Chama a função e armazena o DataFrame
-
-                    print(df_revisoes)
+                    proximasRevisoes = engenheiro.consultaRevisoes(vendas, atracoes)  #Dataframe em pandas para realizar a exibição em forma de tabela
+                    print("\nTabela de acompanhamento para próximas revisões:\n")
+                    print(proximasRevisoes)
 
                     novaConsulta = input("Deseja realizar uma nova consulta? (s/n): ").lower()
                     if novaConsulta == 'n':
@@ -151,7 +141,7 @@ def menuEngenheiro():
                     elif novaConsulta != 's':
                         return menuEngenheiro()
                 case 2:
-                    return acesso()
+                    return main()
                 case 3:
                     print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
                     exit()
@@ -181,4 +171,4 @@ def main():
     except ValueError:
         print("Escolha uma opção válida!")
 
-main()
+main() #Chamada da função principal da aplicação

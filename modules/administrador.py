@@ -1,39 +1,18 @@
 import json
 
-#Funções para importar os dados das planilhas:
-def dadosAtracoes(arquivo_json='Cesaeland_atracoes.json'):
-    with open('Cesaeland_atracoes.json') as CesaelandAtracoes:
-        atracoes = json.load(CesaelandAtracoes)
-    return atracoes
-def dadosVendas(arquivo_json='Cesaeland_vendas.json'):
-    with open('Cesaeland_vendas.json') as CesaelandVendas:
-        vendas = json.load(CesaelandVendas)
-    return vendas
-
-def dadosCustos(arquivo_json='Cesaeland_custos.json'):
-    with open('Cesaeland_custos.json') as CesaelandCustos:
-        custos = json.load(CesaelandCustos)
-    return custos
-
-#Funcao para calcular o preço por atração
-def precoAtracao(atracoes, atracaoId, tipo):
-    for atracao in atracoes:
-        if atracaoId == atracao['id']:
-            if tipo == 'adulto':
-                return atracao['precoAdulto']
-            else:
-                return atracao['precoCrianca']
+# Funcao para calcular o total de vendas
 def totalVendas(atracoes,vendas):
     total = 0
     for venda in vendas:
         for atracao in atracoes:
-            if atracao['id'] == venda['atracao']:
+            if atracao['id'] == venda['atracao']: #Procurar a atração atraves do id na planilha de vendas
                 if venda['tipoCliente'] == 'adulto':
                     total += atracao['precoAdulto']
                 else:
                     total += atracao['precoCrianca']
     return total
 
+# Funcao para calcular o total de lucro
 def totaLucro(vendas, atracoes, custos):
     totalLucro = 0
     for venda in vendas:
@@ -45,7 +24,7 @@ def totaLucro(vendas, atracoes, custos):
                             saldo = atracao['precoAdulto']
                         else:
                             saldo = atracao['precoCrianca']
-                        # Calcula lucro considerando o custo por bilhete
+                        # Calcular o lucro considerando o custo por bilhete
                         lucro = saldo - custo['custoManutencaoBilhete']
                         totalLucro += lucro
 
@@ -54,7 +33,6 @@ def totaLucro(vendas, atracoes, custos):
         totalLucro -= custo['custoFixoMes']
     return totalLucro
 
-
 # Função para encontrar a atração mais procurada
 def maisProcuradaAdultos(vendas, atracoes):
     maximo = 0
@@ -62,7 +40,7 @@ def maisProcuradaAdultos(vendas, atracoes):
     for atracao in atracoes:
         bilhetesAdultos = 0
         for venda in vendas:
-            if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'adulto':
+            if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'adulto': #Buscar atraçao e verificar o tipo do bilhete para adulto
                 bilhetesAdultos += 1
         if bilhetesAdultos > maximo:
             maximo = bilhetesAdultos
@@ -76,7 +54,7 @@ def maisProcuradaCriancas(vendas, atracoes):
     for atracao in atracoes:
         bilhetesCriancas = 0
         for venda in vendas:
-            if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'crianca':
+            if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'crianca': #Buscar atraçao e verificar o tipo do bilhete para criança
                 bilhetesCriancas += 1
         if bilhetesCriancas > maximo:
             maximo = bilhetesCriancas
@@ -134,16 +112,23 @@ def menosLucrativa(vendas, atracoes, custos):
 
 #Funcao para adicionar novo login
 
-def novoUtilizador(arquivo_logins='Cesaeland_logins.json'):
-    with open('Cesaeland_logins.json') as CesaelandLogins:
+def novoUtilizador(arquivo_logins='storage/Cesaeland_logins.json'):
+    with open('storage/Cesaeland_logins.json') as CesaelandLogins:
         logins = json.load(CesaelandLogins)
 
     #Inserir dados para novo utilizador:
     login = input("Informe o login para o utilizador: ")
     senha = input("Senha: ")
-    tipoAcesso = input("Informe o tipo de acesso (ADM ou ENG): ").upper()
 
-    # Adicionar novo login no arquivo json
+    while True:
+        tipoAcesso = input("Informe o tipo de acesso (ADM ou ENG): ").upper()
+
+        if tipoAcesso == "ADM" or tipoAcesso == "ENG": #validação do input realizado para manter o padrão do valor "ADM" ou "ENG"
+            break
+        else:
+            print("Tipo de acesso inválido. Por favor, digite 'ADM' ou 'ENG'.")
+
+    #Adicionar novo login no arquivo json através do append
     logins.append({"username": login, "password": senha, "role": tipoAcesso})
 
     with open(arquivo_logins, 'w') as CesaelandLogins:

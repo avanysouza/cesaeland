@@ -38,5 +38,30 @@
         "username": "avany",
         "password": "123",
         "role": "ENG"
+    },
+    {
+        "username": "avanyteste",
+        "password": "123",
+        "role": "ADM"
+    },
+    {
+        "username": "cesaeaws2",
+        "password": "123",
+        "role": "AMD"
+    },
+    {
+        "username": "avany",
+        "password": "",
+        "role": "AMD"
+    },
+    {
+        "username": "aws",
+        "password": "123",
+        "role": "ADM"
+    },
+    {
+        "username": "aws2",
+        "password": "123",
+        "role": "ENG"
     }
 ]
