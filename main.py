@@ -13,10 +13,10 @@ def acesso():
             print(f"Login realizado com sucesso!")
             tipo = login['role']
             if tipo == 'ENG':
-                # Chamada da função para o tipo "Engenheiro"
+                #Função para exibir o menu para o tipo de acesso "Engenheiro"
                 menuEngenheiro()
             else:
-                # Chamada da função para o tipo "Administrador"
+                # Função para exibir o menu para o tipo de acesso "Administrador"
                 menuAdministrador()
             return  # Encerra a função após login bem-sucedido
 
