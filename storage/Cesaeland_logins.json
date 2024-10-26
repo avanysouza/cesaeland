@@ -63,5 +63,10 @@
         "username": "aws2",
         "password": "123",
         "role": "ENG"
+    },
+    {
+        "username": "teste2",
+        "password": "123",
+        "role": "ADM"
     }
 ]

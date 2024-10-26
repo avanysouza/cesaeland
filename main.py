@@ -29,6 +29,7 @@ def menuCliente():
         print("1 - Consultar Atrações Disponíveis")
         print("2 - Consultar Atrações Favoritas")
         print("3 - Voltar ao Menu Inicial")
+        print("4 - Sair")
 
         try:
             opcao = int(input("Digite o número da opção desejada: \n"))
@@ -46,6 +47,9 @@ def menuCliente():
                           cliente.atracaoFavoritaCrianca(bilhetesCriancas, atracoes))
                 case 3:
                     return main()
+                case 4:
+                    print("Obrigado por usar o Parque Temático CESAELand! Até a próxima!")
+                    exit()
                 case _:
                     print("Opção inválida!")
 

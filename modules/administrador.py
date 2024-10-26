@@ -35,35 +35,35 @@ def totaLucro(vendas, atracoes, custos):
 
 # Função para encontrar a atração mais procurada
 def maisProcuradaAdultos(vendas, atracoes):
-    maximo = 0
+    quantidade = 0
     maisProcurada = None
     for atracao in atracoes:
         bilhetesAdultos = 0
         for venda in vendas:
             if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'adulto': #Buscar atraçao e verificar o tipo do bilhete para adulto
                 bilhetesAdultos += 1
-        if bilhetesAdultos > maximo:
-            maximo = bilhetesAdultos
+        if bilhetesAdultos > quantidade:
+            quantidade = bilhetesAdultos
             maisProcurada = atracao['atracao']
-    return maisProcurada, maximo
+    return maisProcurada
 
 # Função para consultar a atração mais procurada por crianças
 def maisProcuradaCriancas(vendas, atracoes):
-    maximo = 0
+    quantidade = 0
     maisProcurada = None
     for atracao in atracoes:
         bilhetesCriancas = 0
         for venda in vendas:
             if venda['atracao'] == atracao['id'] and venda['tipoCliente'] == 'crianca': #Buscar atraçao e verificar o tipo do bilhete para criança
                 bilhetesCriancas += 1
-        if bilhetesCriancas > maximo:
-            maximo = bilhetesCriancas
+        if bilhetesCriancas > quantidade:
+            quantidade = bilhetesCriancas
             maisProcurada = atracao['atracao']
-    return maisProcurada, maximo
+    return maisProcurada
 
 # Função para calcular a atração mais lucrativa
 def maisLucrativa(vendas, atracoes, custos):
-    maxLucro = 0
+    quantLucro = 0
     maisLucrativa = None
 
     for atracao in atracoes:
@@ -81,14 +81,14 @@ def maisLucrativa(vendas, atracoes, custos):
         for custo in custos:
             if custo['atracao'] == atracao['id']:
                 lucroAtracao -= custo['custoFixoMes']
-        if lucroAtracao > maxLucro:
-            maxLucro = lucroAtracao
+        if lucroAtracao > quantLucro:
+            quantLucro = lucroAtracao
             maisLucrativa = atracao['atracao']
-    return maisLucrativa, maxLucro
+    return maisLucrativa
 
 # Função para calcular a atração menos lucrativa
 def menosLucrativa(vendas, atracoes, custos):
-    minLucro = 0
+    quantLucro = 0
     menosLucrativa = None
     for atracao in atracoes:
         lucroAtracao = 0
@@ -105,10 +105,10 @@ def menosLucrativa(vendas, atracoes, custos):
         for custo in custos:
             if custo['atracao'] == atracao['id']:
                 lucroAtracao -= custo['custoFixoMes']
-        if lucroAtracao < minLucro:
-            minLucro = lucroAtracao
+        if lucroAtracao < quantLucro:
+            quantLucro = lucroAtracao
             menosLucrativa = atracao['atracao']
-    return menosLucrativa, minLucro
+    return menosLucrativa
 
 #Funcao para adicionar novo login
 
