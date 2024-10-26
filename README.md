@@ -16,6 +16,22 @@ O **Parque Temático CESAELand** é uma aplicação para gerenciamento de um par
 Essa aplicação foi desenvolvida como projeto final da disciplina "Programação em Python" durante minha formação no curso AWS/ReStart no CesaeDigital, sob orientação do formador Vitor Santos.<br> 
 Este projeto foi desenvolvido com o objetivo de praticar e aprimorar habilidades em Python. Através da construção de um sistema para gerenciamento de um parque temático, exploramos conceitos fundamentais da linguagem, como manipulação de dados, interação com o usuário e estruturação de código. 
 
+## Estrutura do Projeto
+CESAELand/<br> 
+│<br> 
+├── modules/<br> 
+│   ├── administrador.py<br> 
+│   ├── cliente.py<br> 
+│   ├── dados.py<br> 
+│   └── engenheiro.py<br> 
+│<br> 
+├── storage/<br> 
+│   ├── Cesaeland_atracoes.json<br> 
+│   ├── Cesaeland_custos.json<br> 
+│   ├── Cesaeland_logins.json<br> 
+│   └── Cesaeland_vendas.json<br> 
+│<br> 
+└── main.py<br> 
 
 ## Funcionalidades
 
